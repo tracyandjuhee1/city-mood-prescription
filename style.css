@@ -268,6 +268,46 @@ h1 {
 	font-weight: 500;
 }
 
+.memo-entry {
+	margin-bottom: 22px;
+}
+
+.memo-entry label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 9px;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.memo-entry label span {
+	color: var(--muted);
+	font-size: 10px;
+	font-weight: 400;
+}
+
+.memo-entry input {
+	width: 100%;
+	min-height: 46px;
+	padding: 10px 13px;
+	border: 1px solid var(--line);
+	border-radius: 0;
+	background: rgba(251, 250, 245, 0.7);
+	color: var(--ink);
+	font-size: 12px;
+}
+
+.memo-entry input::placeholder {
+	color: #858b80;
+}
+
+.memo-entry input:focus-visible {
+	border-color: var(--green);
+	outline: 2px solid rgba(86, 136, 138, 0.35);
+	outline-offset: 2px;
+}
+
 .required-note {
 	padding-bottom: 3px;
 	color: var(--muted);
@@ -474,6 +514,19 @@ h1 {
 	color: #4e6258;
 	font-size: 12px;
 	line-height: 1.8;
+}
+
+.result-memo {
+	width: fit-content;
+	max-width: 100%;
+	margin: 14px 0 0;
+	padding: 8px 10px;
+	border-left: 2px solid var(--blue);
+	background: rgba(251, 250, 245, 0.64);
+	color: var(--green-dark);
+	font-size: 11px;
+	line-height: 1.7;
+	overflow-wrap: anywhere;
 }
 
 .result-detail {

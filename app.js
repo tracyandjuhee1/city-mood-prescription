@@ -8,19 +8,21 @@ const cityTypes = [
 			energy: { "낮음": 3, "보통": 2, "높음": 0 },
 			companion: { "혼자": 2, "함께": 1 },
 			time: { "1시간 이내": 1, "2~3시간": 2, "반나절": 2 },
-			mood: { "조용함": 3, "활기": 0, "자연": 3, "문화": 0 }
+			mood: { "조용함": 3, "활기": 0, "자연": 3, "문화": 0 },
+			weather: { "맑음": 2, "흐림": 0, "비": 0 }
 		}
 	},
 	{
-		name: "느슨한 공원형",
-		interpretation: "목적지를 정하지 않아도 괜찮은 날이에요. 초록 사이를 천천히 지나며 숨을 고르세요.",
-		character: "그늘진 산책로와 넓은 잔디, 잠시 앉아 풍경을 볼 수 있는 공원이 잘 어울려요.",
-		places: ["서울숲", "선유도공원", "올림픽공원"],
+		name: "나무 그늘형",
+		interpretation: "큰 나무 아래에서 속도를 늦추고, 계절이 바뀌는 모습을 가까이 느껴보세요.",
+		character: "오래된 나무 그늘 곁 벤치에서 쉬고, 벤치와 나무 사이로 난 길을 천천히 걸을 수 있는 공간이 잘 어울려요.",
+		places: ["남산공원 북측순환로", "삼청공원 산책로", "서울숲 은행나무숲길"],
 		scores: {
 			energy: { "낮음": 3, "보통": 2, "높음": 1 },
 			companion: { "혼자": 1, "함께": 2 },
 			time: { "1시간 이내": 1, "2~3시간": 2, "반나절": 3 },
-			mood: { "조용함": 2, "활기": 1, "자연": 3, "문화": 0 }
+			mood: { "조용함": 2, "활기": 1, "자연": 3, "문화": 0 },
+			weather: { "맑음": 2, "흐림": 2, "비": 0 }
 		}
 	},
 	{
@@ -32,7 +34,8 @@ const cityTypes = [
 			energy: { "낮음": 0, "보통": 2, "높음": 3 },
 			companion: { "혼자": 2, "함께": 2 },
 			time: { "1시간 이내": 1, "2~3시간": 3, "반나절": 2 },
-			mood: { "조용함": 0, "활기": 3, "자연": 0, "문화": 2 }
+			mood: { "조용함": 0, "활기": 3, "자연": 0, "문화": 2 },
+			weather: { "맑음": 2, "흐림": 0, "비": 0 }
 		}
 	},
 	{
@@ -44,7 +47,8 @@ const cityTypes = [
 			energy: { "낮음": 2, "보통": 2, "높음": 0 },
 			companion: { "혼자": 2, "함께": 1 },
 			time: { "1시간 이내": 2, "2~3시간": 3, "반나절": 3 },
-			mood: { "조용함": 1, "활기": 1, "자연": 0, "문화": 3 }
+			mood: { "조용함": 1, "활기": 1, "자연": 0, "문화": 3 },
+			weather: { "맑음": 0, "흐림": 2, "비": 7 }
 		}
 	}
 ];
@@ -53,19 +57,21 @@ const form = document.querySelector("#prescription-form");
 const resultSection = document.querySelector("#result");
 const resultHeading = document.querySelector("#result-heading");
 const resultInterpretation = document.querySelector("#result-interpretation");
+const resultMemo = document.querySelector("#result-memo");
 const resultCharacter = document.querySelector("#result-character");
 const placeList = document.querySelector("#place-list");
 const resetButton = document.querySelector("#reset-button");
 
-// 함수는 네 가지 답변을 도시 유형별 점수와 비교해 가장 잘 맞는 처방을 고릅니다.
+// 함수는 다섯 가지 답변을 도시 유형별 점수와 비교해 가장 잘 맞는 처방을 고릅니다.
 function recommendCityExperience(answers) {
 	let bestMatch = cityTypes[0];
 	let highestScore = -1;
 
-	// 반복문은 모든 도시 유형과 답변 항목을 차례로 확인합니다.
+	// 반복문은 모든 도시 유형과 다섯 답변(날씨 포함)을 차례로 점수에 반영합니다.
 	for (const cityType of cityTypes) {
 		let score = 0;
 
+		// 날씨 점수도 합산하며, 비가 오면 실내 문화형이 우선되도록 가중합니다.
 		for (const [question, answer] of Object.entries(answers)) {
 			score += cityType.scores[question][answer];
 		}
@@ -80,9 +86,11 @@ function recommendCityExperience(answers) {
 	return bestMatch;
 }
 
-function renderPrescription(cityType) {
+function renderPrescription(cityType, memo) {
 	resultHeading.textContent = cityType.name;
 	resultInterpretation.textContent = cityType.interpretation;
+	resultMemo.hidden = !memo;
+	resultMemo.textContent = memo ? `오늘의 메모: ${memo}` : "";
 	resultCharacter.textContent = cityType.character;
 	placeList.replaceChildren();
 
@@ -110,10 +118,12 @@ form.addEventListener("submit", (event) => {
 		energy: formData.get("energy"),
 		companion: formData.get("companion"),
 		time: formData.get("time"),
-		mood: formData.get("mood")
+		mood: formData.get("mood"),
+		weather: formData.get("weather")
 	};
+	const memo = formData.get("memo").trim();
 
-	renderPrescription(recommendCityExperience(answers));
+	renderPrescription(recommendCityExperience(answers), memo);
 });
 
 resetButton.addEventListener("click", () => {

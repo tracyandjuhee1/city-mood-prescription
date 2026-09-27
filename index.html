@@ -23,7 +23,7 @@
 				<div class="intro-copy">
 					<p class="eyebrow"><span class="eyebrow-dot"></span> A SMALL RESET, IN SEOUL</p>
 					<h1 id="page-title">오늘, 어떤 도시가<br>필요한가요<span class="title-mark">?</span></h1>
-					<p class="intro-description">지금의 나를 가장 편안하게 해줄 동네를 찾아볼게요.<br class="desktop-break"> 네 가지 질문에 답하고, 오늘의 도시 처방을 받아보세요.</p>
+					<p class="intro-description">나무와 물, 골목과 문화 공간 사이에서 오늘의 도시 처방을 찾아보세요.</p>
 				</div>
 				<div class="city-illustration" aria-hidden="true">
 					<div class="map-label map-label-top">SEOUL, TODAY</div>
@@ -39,13 +39,17 @@
 			<section class="questionnaire" aria-labelledby="form-title">
 				<div class="section-heading">
 					<div>
-						<p class="eyebrow section-eyebrow">YOUR DAY, IN FOUR ANSWERS</p>
+						<p class="eyebrow section-eyebrow">YOUR DAY, IN FIVE ANSWERS</p>
 						<h2 id="form-title">지금의 마음을 골라주세요</h2>
 					</div>
-					<span class="required-note"><span aria-hidden="true">*</span> 모두 선택해 주세요</span>
+					<span class="required-note"><span aria-hidden="true">*</span> 다섯 질문은 필수</span>
 				</div>
 
 				<form id="prescription-form">
+					<div class="memo-entry">
+						<label for="city-memo">오늘의 도시 메모 <span>선택</span></label>
+						<input id="city-memo" name="memo" type="text" maxlength="160" placeholder="지금 도시에서 가장 필요한 감각이나 시간을 적어보세요.">
+					</div>
 					<div class="question-grid">
 						<fieldset class="question-block">
 							<legend><span class="question-number">01</span><span>오늘 에너지</span></legend>
@@ -82,6 +86,15 @@
 								<label class="choice"><input type="radio" name="mood" value="문화" required><span class="choice-content"><span class="choice-title">문화</span><span class="choice-detail">새로운 이야기가 있는</span></span></label>
 							</div>
 						</fieldset>
+
+						<fieldset class="question-block">
+							<legend><span class="question-number">05</span><span>오늘의 날씨</span></legend>
+							<div class="choice-list choice-list-three">
+								<label class="choice"><input type="radio" name="weather" value="맑음" required><span class="choice-content"><span class="choice-title">맑음</span><span class="choice-detail">햇살 아래 걷기 좋은</span></span></label>
+								<label class="choice"><input type="radio" name="weather" value="흐림" required><span class="choice-content"><span class="choice-title">흐림</span><span class="choice-detail">차분히 머물기 좋은</span></span></label>
+								<label class="choice"><input type="radio" name="weather" value="비" required><span class="choice-content"><span class="choice-title">비</span><span class="choice-detail">실내에서 보내기 좋은</span></span></label>
+							</div>
+						</fieldset>
 					</div>
 
 					<div class="form-action">
@@ -101,6 +114,7 @@
 						<p class="result-kicker">오늘의 도시 유형</p>
 						<h2 id="result-heading"></h2>
 						<p class="result-interpretation" id="result-interpretation"></p>
+						<p class="result-memo" id="result-memo" hidden></p>
 					</div>
 					<div class="result-detail">
 						<h3><span class="detail-icon" aria-hidden="true">↗</span> 이런 공간을 걸어보세요</h3>
