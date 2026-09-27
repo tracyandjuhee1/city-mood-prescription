@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#f4f3e9">
+		<meta name="description" content="오늘의 기분과 시간에 맞는 서울의 도시 산책을 처방해 드립니다.">
+		<title>오늘, 어떤 도시가 필요한가요?</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="app.js" defer></script>
+	</head>
+	<body>
+		<main class="page-shell">
+			<header class="masthead">
+				<a class="wordmark" href="#top" aria-label="도시 처방 홈">
+					<span class="wordmark-mark" aria-hidden="true">ㄷ</span>
+					<span>도시 처방전 <span class="wordmark-en">SEOUL FIELD NOTES</span></span>
+				</a>
+				<span class="edition">오늘의 산책 · No. 01</span>
+			</header>
+
+			<section class="intro" id="top" aria-labelledby="page-title">
+				<div class="intro-copy">
+					<p class="eyebrow"><span class="eyebrow-dot"></span> A SMALL RESET, IN SEOUL</p>
+					<h1 id="page-title">오늘, 어떤 도시가<br>필요한가요<span class="title-mark">?</span></h1>
+					<p class="intro-description">지금의 나를 가장 편안하게 해줄 동네를 찾아볼게요.<br class="desktop-break"> 네 가지 질문에 답하고, 오늘의 도시 처방을 받아보세요.</p>
+				</div>
+				<div class="city-illustration" aria-hidden="true">
+					<div class="map-label map-label-top">SEOUL, TODAY</div>
+					<div class="map-grid"></div>
+					<div class="map-river"></div>
+					<div class="map-park"></div>
+					<div class="map-path"></div>
+					<span class="map-pin"><span></span></span>
+					<div class="map-label map-label-bottom">37° 33' N · 126° 59' E</div>
+				</div>
+			</section>
+
+			<section class="questionnaire" aria-labelledby="form-title">
+				<div class="section-heading">
+					<div>
+						<p class="eyebrow section-eyebrow">YOUR DAY, IN FOUR ANSWERS</p>
+						<h2 id="form-title">지금의 마음을 골라주세요</h2>
+					</div>
+					<span class="required-note"><span aria-hidden="true">*</span> 모두 선택해 주세요</span>
+				</div>
+
+				<form id="prescription-form">
+					<div class="question-grid">
+						<fieldset class="question-block">
+							<legend><span class="question-number">01</span><span>오늘 에너지</span></legend>
+							<div class="choice-list choice-list-three">
+								<label class="choice"><input type="radio" name="energy" value="낮음" required><span class="choice-content"><span class="choice-title">낮음</span><span class="choice-detail">천천히 충전하고 싶어요</span></span></label>
+								<label class="choice"><input type="radio" name="energy" value="보통" required><span class="choice-content"><span class="choice-title">보통</span><span class="choice-detail">무리 없이 움직일래요</span></span></label>
+								<label class="choice"><input type="radio" name="energy" value="높음" required><span class="choice-content"><span class="choice-title">높음</span><span class="choice-detail">발걸음이 가벼워요</span></span></label>
+							</div>
+						</fieldset>
+
+						<fieldset class="question-block">
+							<legend><span class="question-number">02</span><span>동행</span></legend>
+							<div class="choice-list choice-list-two">
+								<label class="choice"><input type="radio" name="companion" value="혼자" required><span class="choice-content"><span class="choice-title">혼자</span><span class="choice-detail">내 속도에 맞춰서</span></span></label>
+								<label class="choice"><input type="radio" name="companion" value="함께" required><span class="choice-content"><span class="choice-title">함께</span><span class="choice-detail">누군가와 나란히</span></span></label>
+							</div>
+						</fieldset>
+
+						<fieldset class="question-block">
+							<legend><span class="question-number">03</span><span>가능한 시간</span></legend>
+							<div class="choice-list choice-list-three">
+								<label class="choice"><input type="radio" name="time" value="1시간 이내" required><span class="choice-content"><span class="choice-title">1시간 이내</span><span class="choice-detail">가까운 곳에서 짧게</span></span></label>
+								<label class="choice"><input type="radio" name="time" value="2~3시간" required><span class="choice-content"><span class="choice-title">2~3시간</span><span class="choice-detail">잠깐 여유를 내서</span></span></label>
+								<label class="choice"><input type="radio" name="time" value="반나절" required><span class="choice-content"><span class="choice-title">반나절</span><span class="choice-detail">하루의 일부를 온전히</span></span></label>
+							</div>
+						</fieldset>
+
+						<fieldset class="question-block">
+							<legend><span class="question-number">04</span><span>원하는 분위기</span></legend>
+							<div class="choice-list choice-list-four">
+								<label class="choice"><input type="radio" name="mood" value="조용함" required><span class="choice-content"><span class="choice-title">조용함</span><span class="choice-detail">마음이 가라앉는</span></span></label>
+								<label class="choice"><input type="radio" name="mood" value="활기" required><span class="choice-content"><span class="choice-title">활기</span><span class="choice-detail">생기가 도는</span></span></label>
+								<label class="choice"><input type="radio" name="mood" value="자연" required><span class="choice-content"><span class="choice-title">자연</span><span class="choice-detail">초록과 물이 있는</span></span></label>
+								<label class="choice"><input type="radio" name="mood" value="문화" required><span class="choice-content"><span class="choice-title">문화</span><span class="choice-detail">새로운 이야기가 있는</span></span></label>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="form-action">
+						<p>당신의 오늘에 맞는 서울을 고를게요.</p>
+						<button class="submit-button" type="submit">나의 도시 처방 받기 <span aria-hidden="true">↗</span></button>
+					</div>
+				</form>
+			</section>
+
+			<section class="result-section" id="result" aria-labelledby="result-heading" aria-live="polite" hidden>
+				<div class="result-topline">
+					<p class="eyebrow section-eyebrow">A PLACE FOR THE WAY YOU FEEL</p>
+					<span class="result-stamp">TODAY'S PRESCRIPTION</span>
+				</div>
+				<article class="result-card">
+					<div class="result-main">
+						<p class="result-kicker">오늘의 도시 유형</p>
+						<h2 id="result-heading"></h2>
+						<p class="result-interpretation" id="result-interpretation"></p>
+					</div>
+					<div class="result-detail">
+						<h3><span class="detail-icon" aria-hidden="true">↗</span> 이런 공간을 걸어보세요</h3>
+						<p id="result-character"></p>
+					</div>
+					<div class="places-section">
+						<div class="places-heading">
+							<h3>서울의 추천 장소</h3>
+							<span>THREE PLACES TO BEGIN</span>
+						</div>
+						<ol class="place-list" id="place-list"></ol>
+					</div>
+				</article>
+				<button class="reset-button" type="button" id="reset-button"><span aria-hidden="true">↺</span> 다시 답하기</button>
+			</section>
+
+			<footer class="page-footer">
+				<span>도시 처방전 <span class="footer-separator">/</span> SEOUL FIELD NOTES</span>
+				<span>오늘의 기분에, 어울리는 동네 하나</span>
+			</footer>
+		</main>
+	</body>
+</html>
